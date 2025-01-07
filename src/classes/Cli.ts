@@ -273,7 +273,8 @@ class Cli {
         // set the selectedVehicleVin to the vin of the motorbike
         this.selectedVehicleVin = motorbike.vin;
         // perform actions on the motorbike
-        this.performActions(       );
+        this.performActions();
+        this.findVehicleToTow();
       });
       
   }
