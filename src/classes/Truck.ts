@@ -81,8 +81,7 @@ constructor(
     console.log(`Towing Capacity: ${this.towingCapacity} lbs`);
     console.log(`Wheels:`);
     this.wheels.forEach((wheel, index) => {
-      console.log(`Wheel ${index + 1}:`);
-      // wheel.printDetails();
+      console.log(`Wheel ${index + 1}: ${wheel.getDiameter} inches, ${wheel.getTireBrand} tires`);
     });
   }
 }

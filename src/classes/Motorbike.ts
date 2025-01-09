@@ -26,6 +26,7 @@ class Motorbike  extends Vehicle {
     this.weight = weight;
     this.topSpeed = topSpeed;
     this.wheels = wheels;
+
     
   }
 
