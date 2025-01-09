@@ -274,14 +274,13 @@ class Cli {
         this.selectedVehicleVin = motorbike.vin;
         // perform actions on the motorbike
         this.performActions();
-        this.findVehicleToTow();
       });
       
   }
 
   // method to find a vehicle to tow
   // TODO: add a parameter to accept a truck object
-  findVehicleToTow(): void {
+  findVehicleToTow(truck: Truck): void {
     inquirer
       .prompt([
         {
@@ -306,7 +305,12 @@ class Cli {
         }
 
         // find the selected vehicle to tow
-        
+        for (let i = 0; i < this.vehicles.length; i++) {
+          if (this.vehicles[i].vin === answers.vehicleToTow.vin) {
+            truck.tow(this.vehicles[i]);
+          }
+        }
+        this.performActions();
       });
   }
 
@@ -396,6 +400,25 @@ class Cli {
         }
         // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
+        else if (answers.action === 'Tow') {
+          for (let i = 0; i < this.vehicles.length; i++) {
+            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+              if (this.vehicles[i] instanceof Truck) {
+                this.findVehicleToTow(this.vehicles[i] as Truck);
+              }
+            }
+          }
+          return;
+        } 
+        else if (answers.action === 'Wheelie') {
+          for (let i = 0; i < this.vehicles.length; i++) {
+            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+              if (this.vehicles[i] instanceof Motorbike) {
+                (this.vehicles[i] as Motorbike).wheelie();
+              }
+            }
+          }
+        } 
         else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
           this.startCli();
@@ -408,7 +431,8 @@ class Cli {
           // if the user does not want to exit, perform actions on the selected vehicle
           this.performActions();
         }
-      });
+      }
+  );
   }
 
   // method to start the cli
