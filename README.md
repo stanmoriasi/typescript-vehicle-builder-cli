@@ -4,7 +4,7 @@
 This project is a vehicle management system built with TypeScript and the Inquirer package. It allows users to create and manage different types of vehicles, including Cars, Motorbikes, and Trucks. Users can interact with the system through a command-line interface (CLI) to perform various actions such as creating vehicles, viewing details, and performing specific actions like towing and wheelies.
 
 ## Video Demo
-https://app.screencastify.com/v2/manage/videos/PY1LLmuljXwBbBlgvesn
+https://app.screencastify.com/v3/watch/PY1LLmuljXwBbBlgvesn
 
 ## Installation
 
