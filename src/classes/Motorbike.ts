@@ -1,4 +1,5 @@
 // Importing Vehicle and Wheel classes
+import { json } from 'stream/consumers';
 import Vehicle from './Vehicle.js';
 import Wheel from './Wheel.js';
 
@@ -54,7 +55,7 @@ class Motorbike  extends Vehicle {
     console.log(`Weight: ${this.weight}`);
     console.log(`Top Speed: ${this.topSpeed}`);
     console.log(`Color: ${this.color}`);
-    console.log(`Wheels: ${this.wheels}`);
+    console.log(`Wheels:  ${JSON.stringify(this.wheels)}`);
   }
 }
 
